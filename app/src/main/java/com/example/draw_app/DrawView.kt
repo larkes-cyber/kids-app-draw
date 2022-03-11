@@ -93,14 +93,17 @@ class DrawView(context:Context, attr:AttributeSet ):View(context, attr) {
         invalidate()
         return true
     }
-      fun onChangeBrushSize(newSize:Float){
+    fun onChangeBrushSize(newSize:Float){
         mBrushSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
             newSize,
             resources.displayMetrics);
         mDrawPaint!!.strokeWidth = mBrushSize;
-     }
+    }
 
-
+    fun onChangeColor(colorView:String){
+        color = Color.parseColor(colorView);
+        mDrawPaint!!.color = color;
+    }
 
     interface inner class CustomPath(var Color:Int, var Size:Float): Path() {
 
