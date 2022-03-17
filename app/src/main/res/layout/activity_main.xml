@@ -8,25 +8,41 @@
     android:background="@color/white"
     >
 
-    <com.example.draw_app.DrawView
-        android:id="@+id/viewDraw"
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="5dp"
-        android:background="@drawable/border_for_canvas"
         app:layout_constraintBottom_toTopOf="@+id/ll_of_colors"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        android:background="@drawable/border_for_canvas"
+        android:padding="1dp"
+        >
+        <ImageView
+            android:id="@+id/iv_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="image"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image" />
+
+        <com.example.draw_app.DrawView
+            android:id="@+id/viewDraw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80FFFFFF" />
+
+    </FrameLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ll_of_colors"
-        app:layout_constraintBottom_toTopOf="@id/ic_brush"
+        app:layout_constraintBottom_toTopOf="@id/group_of_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewDraw"
+        app:layout_constraintTop_toBottomOf="@id/container"
         android:orientation="horizontal"
         >
         <ImageButton
@@ -119,17 +135,35 @@
             android:tag="@color/white" />
 
     </LinearLayout>
-    <ImageButton
-        android:id="@+id/ic_brush"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
-        android:contentDescription="image"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_brush"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/group_of_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        />
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+        <ImageButton
+            android:id="@+id/ic_gallery"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:contentDescription="image"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_gallery"
+            />
+        <ImageButton
+            android:id="@+id/ic_brush"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:contentDescription="image"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_brush"
+            />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
